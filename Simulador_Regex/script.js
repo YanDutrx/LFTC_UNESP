@@ -22,7 +22,7 @@ function testarExpressao() {
     try {
         // A gente cria o objeto RegExp. Adicionamos a flag 'g' por padrão para buscar todas as ocorrências
         const regex = new RegExp(expressao, 'g');
-        
+
         // Verifica se dá match (se a expressão é válida pro texto)
         const ehValida = regex.test(texto);
 
@@ -35,7 +35,7 @@ function testarExpressao() {
         } else {
             mensagemStatus.textContent = 'INVÁLIDA! A expressão não encontrou nada no texto.';
             mensagemStatus.className = 'status-box error';
-            
+
             // Mostra o texto limpo, sem nada destacado
             divMatches.textContent = texto;
         }
@@ -54,13 +54,13 @@ function destacarTexto(regexOrigem, texto) {
     if (!flagsUsadas.includes('g')) {
         flagsUsadas += 'g';
     }
-    
+
     try {
         const regexGlobal = new RegExp(regexOrigem.source, flagsUsadas);
-        
+
         // O $& significa "a própria string que casou com a expressão"
         const textoComDestaque = texto.replace(regexGlobal, match => `<mark>${match}</mark>`);
-        
+
         divMatches.innerHTML = textoComDestaque;
     } catch (erro) {
         divMatches.textContent = 'Ocorreu um erro ao tentar destacar o texto.';
