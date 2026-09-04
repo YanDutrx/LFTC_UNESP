@@ -98,13 +98,51 @@ small {
 .results-container {
     margin-top: 30px;
     padding-top: 20px;
-    border-top: 2px dashed #cbd5e0;
 }
 
-.results-container h2 {
-    font-size: 18px;
-    color: #2c5282;
-    margin-bottom: 12px;
+.info-title {
+    font-size: 19px;
+    color: #0078d7; /* Azul do titulo igual da imagem */
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+.info-divider {
+    border: 0;
+    height: 1px;
+    background-color: #e0e0e0;
+    margin-bottom: 20px;
+}
+
+.match-info-highlight {
+    padding: 6px 8px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    display: inline-block;
+    width: 100%;
+}
+
+.match-info-highlight.neutral {
+    background-color: #f5f5f5;
+    color: #666;
+}
+
+.match-info-highlight.error {
+    background-color: #cce0ff; /* Fundo azul bem claro */
+    color: #c92a2a; /* Texto em vermelho escuro */
+}
+
+.match-info-highlight.success {
+    background-color: #cce0ff; /* Fundo azul bem claro */
+    color: #0078d7; /* Texto azul para quando der certo */
+}
+
+.match-info-subtext {
+    color: #0078d7; /* Azul do texto secundário */
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    margin-top: 5px;
 }
 
 .matches-box {

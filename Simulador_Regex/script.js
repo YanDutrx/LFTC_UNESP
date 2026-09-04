@@ -12,6 +12,7 @@ function testarExpressao() {
 
     // Se estiver vazio, só reseta a interface
     if (!expressao || !texto) {
+        document.getElementById('matchInfoArea').innerHTML = `<p class="match-info-highlight neutral">Aguardando entrada...</p>`;
         divMatches.innerHTML = 'Nenhum teste realizado ainda.';
         return;
     }
@@ -29,13 +30,27 @@ function testarExpressao() {
             // Destaca os trechos encontrados
             const textoComDestaque = texto.replace(regexGlobal, match => `<mark>${match}</mark>`);
             divMatches.innerHTML = textoComDestaque;
+            
+            // Mostra o Match Information de sucesso
+            document.getElementById('matchInfoArea').innerHTML = `
+                <p class="match-info-highlight success">A sua expressão regular encontrou correspondências no texto.</p>
+            `;
         } else {
             // Mostra o texto limpo, sem nada destacado
             divMatches.textContent = texto;
+            
+            // Mostra o Match Information de falha, idêntico à imagem de referência
+            document.getElementById('matchInfoArea').innerHTML = `
+                <p class="match-info-highlight error">A sua expressão regular não deu match no texto alvo.</p>
+                <p class="match-info-subtext">Tente revisar a sua sintaxe para descobrir o porquê.</p>
+            `;
         }
     } catch (erro) {
         // Se a expressão estiver incompleta ou inválida sintaticamente
         divMatches.textContent = 'Expressão regular inválida. Corrija a sintaxe.';
+        document.getElementById('matchInfoArea').innerHTML = `
+            <p class="match-info-highlight error">Erro de sintaxe na expressão regular.</p>
+        `;
     }
 }
 
