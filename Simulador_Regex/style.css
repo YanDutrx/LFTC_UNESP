@@ -107,34 +107,6 @@ small {
     margin-bottom: 12px;
 }
 
-.status-box {
-    padding: 12px;
-    margin-bottom: 15px;
-    font-weight: bold;
-    border: 1px solid #a0aec0;
-    text-align: center;
-    background-color: #edf2f7;
-    color: #4a5568;
-}
-
-.status-box.success {
-    background-color: #c6f6d5;
-    border-color: #9ae6b4;
-    color: #22543d;
-}
-
-.status-box.error {
-    background-color: #fed7d7;
-    border-color: #feb2b2;
-    color: #742a2a;
-}
-
-.match-details h3 {
-    font-size: 16px;
-    margin-bottom: 8px;
-    color: #4a5568;
-}
-
 .matches-box {
     border: 1px solid #a0aec0;
     padding: 12px;

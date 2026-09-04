@@ -3,7 +3,6 @@
 // o JavaScript possui uma classe nativa chamada RegExp para trabalhar com expressões regulares
 const inputExpressao = document.getElementById('regexInput');
 const inputTexto = document.getElementById('textInput');
-const mensagemStatus = document.getElementById('statusMessage');
 const divMatches = document.getElementById('matchesOutput');
 
 // Função que roda toda vez que o usuário digita algo
@@ -13,57 +12,30 @@ function testarExpressao() {
 
     // Se estiver vazio, só reseta a interface
     if (!expressao || !texto) {
-        mensagemStatus.textContent = 'Aguardando entrada...';
-        mensagemStatus.className = 'status-box neutral';
         divMatches.innerHTML = 'Nenhum teste realizado ainda.';
         return;
     }
 
     try {
-        // A gente cria o objeto RegExp. Adicionamos a flag 'g' por padrão para buscar todas as ocorrências
+        // Usa a flag 'g' para encontrar todas as correspondências, assim como nos outros sites de Regex
         const regex = new RegExp(expressao, 'g');
-
-        // Verifica se dá match (se a expressão é válida pro texto)
+        
+        // Verifica se há pelo menos um match
         const ehValida = regex.test(texto);
 
         if (ehValida) {
-            mensagemStatus.textContent = 'VÁLIDA! A expressão encontrou correspondências no texto.';
-            mensagemStatus.className = 'status-box success';
-
-            // Agora a gente destaca as palavras que deram match
-            destacarTexto(regex, texto);
+            // Reinicia a regex para fazer o replace corretamente (pois o test avançou o índice)
+            const regexGlobal = new RegExp(expressao, 'g');
+            // Destaca os trechos encontrados
+            const textoComDestaque = texto.replace(regexGlobal, match => `<mark>${match}</mark>`);
+            divMatches.innerHTML = textoComDestaque;
         } else {
-            mensagemStatus.textContent = 'INVÁLIDA! A expressão não encontrou nada no texto.';
-            mensagemStatus.className = 'status-box error';
-
             // Mostra o texto limpo, sem nada destacado
             divMatches.textContent = texto;
         }
     } catch (erro) {
-        // Cai aqui se tiver erro de compilação da Regex
-        mensagemStatus.textContent = 'Erro de Sintaxe na Expressão Regular.';
-        mensagemStatus.className = 'status-box error';
-        divMatches.textContent = 'Por favor, corrija a sintaxe da expressão regular.';
-    }
-}
-
-// Função pra colocar aquele fundo amarelo (tag <mark>) no que deu match
-function destacarTexto(regexOrigem, texto) {
-    // Pra destacar tudo, precisamos garantir que a flag global 'g' tá ligada, senão ele só substitui a primeira ocorrência
-    let flagsUsadas = regexOrigem.flags;
-    if (!flagsUsadas.includes('g')) {
-        flagsUsadas += 'g';
-    }
-
-    try {
-        const regexGlobal = new RegExp(regexOrigem.source, flagsUsadas);
-
-        // O $& significa "a própria string que casou com a expressão"
-        const textoComDestaque = texto.replace(regexGlobal, match => `<mark>${match}</mark>`);
-
-        divMatches.innerHTML = textoComDestaque;
-    } catch (erro) {
-        divMatches.textContent = 'Ocorreu um erro ao tentar destacar o texto.';
+        // Se a expressão estiver incompleta ou inválida sintaticamente
+        divMatches.textContent = 'Expressão regular inválida. Corrija a sintaxe.';
     }
 }
 
