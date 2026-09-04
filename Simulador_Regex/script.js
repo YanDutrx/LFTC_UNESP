@@ -1,5 +1,6 @@
 // script.js
 // Pegando as referências dos inputs e divs lá do HTML
+// o JavaScript possui uma classe nativa chamada RegExp para trabalhar com expressões regulares
 const inputExpressao = document.getElementById('regexInput');
 const inputTexto = document.getElementById('textInput');
 const mensagemStatus = document.getElementById('statusMessage');
