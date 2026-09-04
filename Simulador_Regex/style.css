@@ -1,0 +1,166 @@
+/* style.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #e2e8f0; /* Fundo cinza claro em todo o site */
+    color: #333;
+}
+
+/* Cabeçalho */
+header {
+    text-align: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #cbd5e0;
+}
+
+header h1 {
+    font-size: 24px;
+    color: #2c5282;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #718096;
+}
+
+/* Área central onde fica o formulário */
+.container {
+    width: 90%;
+    max-width: 800px;
+    margin: 30px auto;
+    background-color: white;
+    padding: 25px;
+    border: 1px solid #cbd5e0;
+    border-radius: 4px;
+    /* Removido as sombras super suaves e moderninhas, substituindo por uma borda mais dura */
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #2c5282;
+}
+
+.regex-input-wrapper {
+    display: flex;
+    align-items: center;
+    border: 1px solid #a0aec0;
+    background-color: #f7fafc;
+    padding: 2px 5px;
+}
+
+#regexInput {
+    flex: 1;
+    border: none;
+    background: transparent;
+    padding: 10px;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 16px;
+}
+
+#regexInput:focus {
+    outline: none;
+}
+
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #a0aec0;
+    font-family: "Courier New", Courier, monospace;
+    font-size: 15px;
+    resize: vertical;
+    background-color: #f7fafc;
+}
+
+textarea:focus {
+    outline: 2px solid #2c5282;
+}
+
+small {
+    display: block;
+    color: #718096;
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+.results-container {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 2px dashed #cbd5e0;
+}
+
+.results-container h2 {
+    font-size: 18px;
+    color: #2c5282;
+    margin-bottom: 12px;
+}
+
+.status-box {
+    padding: 12px;
+    margin-bottom: 15px;
+    font-weight: bold;
+    border: 1px solid #a0aec0;
+    text-align: center;
+    background-color: #edf2f7;
+    color: #4a5568;
+}
+
+.status-box.success {
+    background-color: #c6f6d5;
+    border-color: #9ae6b4;
+    color: #22543d;
+}
+
+.status-box.error {
+    background-color: #fed7d7;
+    border-color: #feb2b2;
+    color: #742a2a;
+}
+
+.match-details h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: #4a5568;
+}
+
+.matches-box {
+    border: 1px solid #a0aec0;
+    padding: 12px;
+    background-color: #f7fafc;
+    min-height: 100px;
+    font-family: "Courier New", Courier, monospace;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+mark {
+    background-color: #faf089;
+    color: #000;
+    font-weight: bold;
+    padding: 0 2px;
+}
+
+footer {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 12px;
+    color: #718096;
+    padding-top: 15px;
+    border-top: 1px solid #cbd5e0;
+}
+
+footer p {
+    margin-bottom: 5px;
+}

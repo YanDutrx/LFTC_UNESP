@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Regex - LFTC</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Simulador de Expressão Regular</h1>
+            <p class="subtitle">Trabalho da disciplina de Linguagens Formais e Teoria da Computação (LFTC)</p>
+        </header>
+
+        <main>
+            <div class="input-group">
+                <label for="regexInput">Expressão Regular (Regex):</label>
+                <div class="regex-input-wrapper">
+                    <input type="text" id="regexInput" placeholder="Digite sua Regex aqui (Ex: [0-9]+)" autocomplete="off">
+                </div>
+                <small>Insira apenas a expressão regular. As buscas serão aplicadas em todo o texto.</small>
+            </div>
+
+            <div class="input-group">
+                <label for="textInput">Texto para testar:</label>
+                <textarea id="textInput" rows="5" placeholder="Cole ou digite aqui o texto que será analisado pela expressão regular..."></textarea>
+            </div>
+
+            <div class="results-container">
+                <h2>Resultado da Avaliação</h2>
+                <div id="statusMessage" class="status-box neutral">Aguardando entrada...</div>
+                
+                <div class="match-details">
+                    <h3>Matches Encontrados:</h3>
+                    <div id="matchesOutput" class="matches-box">Nenhum teste realizado ainda.</div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <div class="credits">
+                <p><strong>Desenvolvido por:</strong> Gustavo Leão Pontes Nunes, João Pedro Biffe Lopes Pedroso e Yan Felipe Dutra Martins</p>
+                <p><strong>Professor:</strong> Dr. Celso Olivette Junior</p>
+                <p>Faculdade de Ciências e Tecnologia UNESP - 6º Semestre de Ciência da Computação</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
