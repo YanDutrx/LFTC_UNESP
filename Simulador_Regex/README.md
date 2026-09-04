@@ -2,20 +2,20 @@
 
 Este projeto é um simulador web de Expressões Regulares (Regex) desenvolvido como requisito para a disciplina de **Linguagens Formais e Teoria da Computação (LFTC)**.
 
-## 💻 Sobre o Projeto
+## Sobre o Projeto
 
 O simulador permite aos usuários digitar uma Expressão Regular (Regex) e validar instantaneamente se um texto de entrada possui correspondências ("matches") com essa expressão. A validação ocorre em tempo real conforme o usuário digita, e os resultados encontrados são destacados visualmente na tela.
 
 A interface foi projetada para ser limpa, responsiva e focada na usabilidade, adotando um visual clássico e acadêmico.
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 O projeto foi construído utilizando apenas tecnologias web nativas, sem a necessidade de bibliotecas ou frameworks externos ("Vanilla"):
 - **HTML5**: Estruturação semântica da página.
 - **CSS3**: Estilização visual (layout, cores institucionais, tipografia).
 - **JavaScript**: Lógica de validação em tempo real utilizando a classe nativa `RegExp`.
 
-## 🚀 Como Executar Localmente
+## Como Executar Localmente
 
 Como não há dependências complexas, rodar o projeto é extremamente simples:
 
@@ -30,7 +30,7 @@ Caso queira emular um ambiente de servidor HTTP real na porta 3000:
 2. Execute o comando: `python -m http.server 3000` (Requer Python instalado).
 3. Acesse `http://localhost:3000` em seu navegador.
 
-## 👥 Autores (Integrantes do Grupo)
+## Autores (Integrantes do Grupo)
 
 - Gustavo Leão Pontes Nunes
 - João Pedro Biffe Lopes Pedroso
