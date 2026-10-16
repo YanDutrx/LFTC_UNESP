@@ -1,4 +1,4 @@
-/* style.css */
+/* style.css - Simulador de Linguagens Formais (LFTC UNESP) */
 * {
     margin: 0;
     padding: 0;
@@ -7,14 +7,26 @@
 
 body {
     font-family: Arial, Helvetica, sans-serif;
-    background-color: #e2e8f0; /* Fundo cinza claro em todo o site */
+    background-color: #e2e8f0; /* Fundo cinza claro institucional */
     color: #333;
+    line-height: 1.5;
+}
+
+/* Área central onde fica o simulador */
+.container {
+    width: 90%;
+    max-width: 820px;
+    margin: 30px auto;
+    background-color: white;
+    padding: 25px 30px;
+    border: 1px solid #cbd5e0;
+    border-radius: 4px;
 }
 
 /* Cabeçalho */
 header {
     text-align: center;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
     padding-bottom: 15px;
     border-bottom: 1px solid #cbd5e0;
 }
@@ -22,7 +34,7 @@ header {
 header h1 {
     font-size: 24px;
     color: #2c5282;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
 
 .subtitle {
@@ -30,18 +42,51 @@ header h1 {
     color: #718096;
 }
 
-/* Área central onde fica o formulário */
-.container {
-    width: 90%;
-    max-width: 800px;
-    margin: 30px auto;
-    background-color: white;
-    padding: 25px;
+/* Navegação e Seletor de Modo (RegEx vs Gramática Regular) */
+.mode-nav {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 25px;
+    background-color: #edf2f7;
+    padding: 4px;
     border: 1px solid #cbd5e0;
     border-radius: 4px;
-    /* Removido as sombras super suaves e moderninhas, substituindo por uma borda mais dura */
 }
 
+.mode-btn {
+    flex: 1;
+    padding: 10px 14px;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+    background: transparent;
+    border: none;
+    color: #4a5568;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.mode-btn:hover:not(.active) {
+    background-color: #e2e8f0;
+    color: #2d3748;
+}
+
+.mode-btn.active {
+    background-color: #2c5282;
+    color: #ffffff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.mode-icon {
+    font-size: 15px;
+}
+
+/* Grupos de Entrada */
 .input-group {
     margin-bottom: 20px;
 }
@@ -49,8 +94,9 @@ header h1 {
 .input-group label {
     display: block;
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-bottom: 6px;
     color: #2c5282;
+    font-size: 14px;
 }
 
 .regex-input-wrapper {
@@ -61,16 +107,17 @@ header h1 {
     padding: 2px 5px;
 }
 
-#regexInput {
+#regexInput, #wordInput {
     flex: 1;
     border: none;
     background: transparent;
     padding: 10px;
     font-family: "Courier New", Courier, monospace;
     font-size: 16px;
+    color: #2d3748;
 }
 
-#regexInput:focus {
+#regexInput:focus, #wordInput:focus {
     outline: none;
 }
 
@@ -79,12 +126,30 @@ textarea {
     padding: 10px;
     border: 1px solid #a0aec0;
     font-family: "Courier New", Courier, monospace;
-    font-size: 15px;
+    font-size: 14px;
+    line-height: 1.4;
     resize: vertical;
     background-color: #f7fafc;
+    color: #2d3748;
 }
 
 textarea:focus {
+    outline: 2px solid #2c5282;
+}
+
+.preset-select {
+    width: 100%;
+    padding: 9px 12px;
+    border: 1px solid #a0aec0;
+    background-color: #f7fafc;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    color: #2d3748;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.preset-select:focus {
     outline: 2px solid #2c5282;
 }
 
@@ -95,64 +160,205 @@ small {
     font-size: 12px;
 }
 
+/* Área de Análise e Classificação da Gramática */
+.grammar-analysis-card {
+    background-color: #f8fafc;
+    border: 1px solid #cbd5e0;
+    border-radius: 4px;
+    padding: 16px;
+    margin-bottom: 25px;
+}
+
+.analysis-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.analysis-title {
+    font-size: 15px;
+    font-weight: bold;
+    color: #2c5282;
+}
+
+/* Badges de Classificação */
+.badge {
+    display: inline-block;
+    padding: 4px 10px;
+    font-size: 13px;
+    font-weight: bold;
+    border-radius: 3px;
+    font-family: "Courier New", Courier, monospace;
+    border: 1px solid transparent;
+}
+
+.badge.neutral {
+    background-color: #f1f5f9;
+    color: #64748b;
+    border-color: #cbd5e1;
+}
+
+.badge.grud {
+    background-color: #dbeafe;
+    color: #1e40af;
+    border-color: #93c5fd;
+}
+
+.badge.grue {
+    background-color: #ede9fe;
+    color: #5b21b6;
+    border-color: #c4b5fd;
+}
+
+.badge.grd {
+    background-color: #d1fae5;
+    color: #065f46;
+    border-color: #6ee7b7;
+}
+
+.badge.gre {
+    background-color: #e0f2fe;
+    color: #0369a1;
+    border-color: #7dd3fc;
+}
+
+.badge.nao-regular {
+    background-color: #fee2e2;
+    color: #991b1b;
+    border-color: #fca5a5;
+}
+
+/* Quarteto Formal */
+.quarteto-box {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 10px;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    padding: 10px 14px;
+    border-radius: 3px;
+    font-size: 13px;
+    margin-bottom: 12px;
+}
+
+.quarteto-item {
+    color: #4a5568;
+}
+
+.quarteto-item strong {
+    color: #2c5282;
+}
+
+.quarteto-item span {
+    font-family: "Courier New", Courier, monospace;
+    color: #1a202c;
+    font-weight: bold;
+}
+
+.classification-note {
+    font-size: 13px;
+    color: #4a5568;
+    line-height: 1.5;
+}
+
+/* Área de Resultados */
 .results-container {
-    margin-top: 30px;
-    padding-top: 20px;
+    margin-top: 25px;
+    padding-top: 15px;
 }
 
 .info-title {
-    font-size: 19px;
-    color: #0078d7; /* Azul do titulo igual da imagem */
+    font-size: 18px;
+    color: #0078d7; /* Azul clássico */
     font-family: Arial, Helvetica, sans-serif;
     font-weight: normal;
-    margin-bottom: 10px;
+    margin-bottom: 8px;
 }
 
 .info-divider {
     border: 0;
     height: 1px;
     background-color: #e0e0e0;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
 }
 
 .match-info-highlight {
-    padding: 6px 8px;
+    padding: 8px 12px;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 15px;
+    font-size: 14px;
     display: inline-block;
     width: 100%;
+    border-radius: 2px;
 }
 
 .match-info-highlight.neutral {
     background-color: #f5f5f5;
     color: #666;
+    border: 1px solid #e2e8f0;
 }
 
 .match-info-highlight.error {
-    background-color: #cce0ff; /* Fundo azul bem claro */
-    color: #c92a2a; /* Texto em vermelho escuro */
+    background-color: #fde8e8;
+    color: #c53030;
+    border: 1px solid #feb2b2;
 }
 
 .match-info-highlight.success {
-    background-color: #cce0ff; /* Fundo azul bem claro */
-    color: #0078d7; /* Texto azul para quando der certo */
+    background-color: #ebf8ff;
+    color: #0078d7;
+    border: 1px solid #bee3f8;
 }
 
 .match-info-subtext {
-    color: #0078d7; /* Azul do texto secundário */
+    color: #0078d7;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 15px;
-    margin-top: 5px;
+    font-size: 13px;
+    margin-top: 6px;
 }
 
+/* Caixa de correspondências e derivação */
 .matches-box {
     border: 1px solid #a0aec0;
     padding: 12px;
     background-color: #f7fafc;
-    min-height: 100px;
+    min-height: 80px;
     font-family: "Courier New", Courier, monospace;
+    font-size: 14px;
     white-space: pre-wrap;
     word-wrap: break-word;
+}
+
+.derivation-box {
+    background-color: #ffffff;
+    border: 1px solid #a0aec0;
+    padding: 14px;
+    min-height: 70px;
+    color: #1a202c;
+}
+
+.derivation-step-num {
+    color: #718096;
+    user-select: none;
+    margin-right: 8px;
+    font-weight: normal;
+}
+
+.derivation-arrow {
+    color: #0078d7;
+    font-weight: bold;
+    margin: 0 4px;
+}
+
+.derivation-rule-tag {
+    color: #718096;
+    font-size: 12px;
+    margin-left: 10px;
+    font-style: italic;
 }
 
 mark {
@@ -162,6 +368,7 @@ mark {
     padding: 0 2px;
 }
 
+/* Rodapé */
 footer {
     margin-top: 30px;
     text-align: center;
@@ -172,5 +379,5 @@ footer {
 }
 
 footer p {
-    margin-bottom: 5px;
+    margin-bottom: 4px;
 }

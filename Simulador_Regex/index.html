@@ -3,40 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulador de Regex - LFTC</title>
+    <title>Simulador de Linguagens Formais - LFTC</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>Simulador de Expressão Regular</h1>
+            <h1 id="mainTitle">Simulador de Linguagens Formais</h1>
             <p class="subtitle">Trabalho da disciplina de Linguagens Formais e Teoria da Computação (LFTC)</p>
         </header>
 
+        <!-- Seletor de Modo: Escolha entre RegEx ou Gramática Regular -->
+        <nav class="mode-nav" aria-label="Seletor de Modo">
+            <button type="button" id="btnModeRegex" class="mode-btn active">
+                <span class="mode-icon">🔍</span> Expressão Regular (Regex)
+            </button>
+            <button type="button" id="btnModeGrammar" class="mode-btn">
+                <span class="mode-icon">📜</span> Gramática Regular (GR)
+            </button>
+        </nav>
+
         <main>
-            <div class="input-group">
-                <label for="regexInput">Expressão Regular (Regex):</label>
-                <div class="regex-input-wrapper">
-                    <input type="text" id="regexInput" placeholder="Digite sua Regex aqui (Ex: ^[a-z]*$)" autocomplete="off">
+            <!-- MÓDULO 1: EXPRESSÃO REGULAR -->
+            <section id="sectionRegex" class="simulator-section">
+                <div class="input-group">
+                    <label for="regexInput">Expressão Regular (Regex):</label>
+                    <div class="regex-input-wrapper">
+                        <input type="text" id="regexInput" placeholder="Digite sua Regex aqui (Ex: ^[a-z]*$ ou a(ba)*)" autocomplete="off">
+                    </div>
+                    <small>Insira a expressão regular. As buscas serão aplicadas em tempo real em todo o texto.</small>
                 </div>
-                <small>Insira apenas a expressão regular. As buscas serão aplicadas em todo o texto.</small>
-            </div>
 
-            <div class="input-group">
-                <label for="textInput">Texto para testar:</label>
-                <textarea id="textInput" rows="5" placeholder="Cole ou digite aqui o texto que será analisado pela expressão regular..."></textarea>
-            </div>
-
-            <div class="results-container">
-                <h2 class="info-title">Informações do Match</h2>
-                <hr class="info-divider">
-                
-                <div id="matchInfoArea">
-                    <p class="match-info-highlight neutral">Aguardando entrada...</p>
+                <div class="input-group">
+                    <label for="textInput">Texto para testar:</label>
+                    <textarea id="textInput" rows="5" placeholder="Cole ou digite aqui o texto que será analisado pela expressão regular..."></textarea>
                 </div>
-                
-                <div id="matchesOutput" class="matches-box" style="margin-top: 25px;">Nenhum teste realizado ainda.</div>
-            </div>
+
+                <div class="results-container">
+                    <h2 class="info-title">Informações do Match</h2>
+                    <hr class="info-divider">
+                    
+                    <div id="matchInfoArea">
+                        <p class="match-info-highlight neutral">Aguardando entrada...</p>
+                    </div>
+                    
+                    <div id="matchesOutput" class="matches-box" style="margin-top: 20px;">Nenhum teste realizado ainda.</div>
+                </div>
+            </section>
+
+            <!-- MÓDULO 2: GRAMÁTICA REGULAR (GRD, GRE, GRUD, GRUE) -->
+            <section id="sectionGrammar" class="simulator-section" style="display: none;">
+                <div class="input-group">
+                    <label for="grammarPresetSelect">Exemplos Prontos (Aulas & Lousa Prof. Celso):</label>
+                    <select id="grammarPresetSelect" class="preset-select">
+                        <option value="">-- Selecione um exemplo clássico para carregar --</option>
+                        <option value="ex_grud_aba">Aula 03 (Slide 26): a(ba)* em GRUD (|w| ≤ 1, Direita)</option>
+                        <option value="ex_grue_aba">Aula 03 (Slide 27): a(ba)* em GRUE (|w| ≤ 1, Esquerda)</option>
+                        <option value="ex_grd_aba">Aula 03 (Slide 24): a(ba)* em GRD (|w| ≥ 0, Direita)</option>
+                        <option value="ex_gre_aba">Aula 03 (Slide 25): a(ba)* em GRE (|w| ≥ 0, Esquerda)</option>
+                        <option value="ex_lousa_abb_grd">Lousa do Professor: a*bb em GRD (Não-Unitária)</option>
+                        <option value="ex_lousa_abb_grud">Lousa do Professor: a*bb em GRUD (Unitária)</option>
+                        <option value="ex_slide19_par">Aula 03 (Slide 19): (a|b)*(aa|bb) em GRD</option>
+                        <option value="ex_prova_grue">Prova 2020: 0⁺ 1 0* em GRUE (|w| ≤ 1, Esquerda)</option>
+                        <option value="ex_nao_regular_glc">Contraexemplo (Slide 12): S -> aSb | e (Não-Regular / GLC)</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label for="grammarInput">Regras de Produção da Gramática (P):</label>
+                    <textarea id="grammarInput" rows="6" placeholder="Digite as produções aqui, uma variável por linha:&#10;S -> aA&#10;A -> bB | e&#10;B -> aA"></textarea>
+                    <small>Símbolos: use <strong>-></strong> ou <strong>→</strong> para produzir, <strong>|</strong> para alternativas, e <strong>e</strong>, <strong>ε</strong> ou <strong>λ</strong> para cadeia vazia.</small>
+                </div>
+
+                <!-- Painel de Classificação Formal e Quarteto -->
+                <div class="grammar-analysis-card">
+                    <div class="analysis-header">
+                        <span class="analysis-title">Classificação Formal da Gramática:</span>
+                        <span id="classificationBadge" class="badge neutral">Aguardando regras...</span>
+                    </div>
+                    
+                    <div id="quartetoArea" class="quarteto-box">
+                        <div class="quarteto-item"><strong>Variáveis (V):</strong> <span id="quartetoV">—</span></div>
+                        <div class="quarteto-item"><strong>Terminais (T):</strong> <span id="quartetoT">—</span></div>
+                        <div class="quarteto-item"><strong>Inicial (S):</strong> <span id="quartetoS">—</span></div>
+                        <div class="quarteto-item"><strong>Total Regras:</strong> <span id="quartetoP">—</span></div>
+                    </div>
+
+                    <div id="classificationExplanation" class="classification-note">
+                        Insira as regras de produção acima para classificar automaticamente em <strong>GRD</strong>, <strong>GRE</strong>, <strong>GRUD</strong> ou <strong>GRUE</strong> conforme os critérios da disciplina.
+                    </div>
+                </div>
+
+                <!-- Testador de Palavras e Derivação -->
+                <div class="results-container" style="margin-top: 25px;">
+                    <h2 class="info-title">Simulação de Palavra & Derivação</h2>
+                    <hr class="info-divider">
+
+                    <div class="input-group" style="margin-bottom: 15px;">
+                        <label for="wordInput">Palavra para testar (w):</label>
+                        <div class="regex-input-wrapper">
+                            <input type="text" id="wordInput" placeholder="Ex: ababa (ou deixe vazio para testar ε)" autocomplete="off">
+                        </div>
+                    </div>
+
+                    <div id="grammarMatchInfoArea">
+                        <p class="match-info-highlight neutral">Aguardando palavra para testar...</p>
+                    </div>
+
+                    <div id="derivationArea" style="margin-top: 15px; display: none;">
+                        <label style="font-weight: bold; color: #2c5282; display: block; margin-bottom: 6px;">Passos da Derivação Formal (S ⇒* w):</label>
+                        <div id="derivationSteps" class="matches-box derivation-box"></div>
+                    </div>
+                </div>
+            </section>
         </main>
 
         <footer>
