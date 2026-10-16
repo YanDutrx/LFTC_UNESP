@@ -16,10 +16,10 @@
         <!-- Seletor de Modo: Escolha entre RegEx ou Gramática Regular -->
         <nav class="mode-nav" aria-label="Seletor de Modo">
             <button type="button" id="btnModeRegex" class="mode-btn active">
-                <span class="mode-icon">🔍</span> Expressão Regular (Regex)
+                Expressão Regular (Regex)
             </button>
             <button type="button" id="btnModeGrammar" class="mode-btn">
-                <span class="mode-icon">📜</span> Gramática Regular (GR)
+                Gramática Regular (GR)
             </button>
         </nav>
 
@@ -54,18 +54,18 @@
             <!-- MÓDULO 2: GRAMÁTICA REGULAR (GRD, GRE, GRUD, GRUE) -->
             <section id="sectionGrammar" class="simulator-section" style="display: none;">
                 <div class="input-group">
-                    <label for="grammarPresetSelect">Exemplos Prontos (Aulas & Lousa Prof. Celso):</label>
+                    <label for="grammarPresetSelect">Exemplos Prontos:</label>
                     <select id="grammarPresetSelect" class="preset-select">
-                        <option value="">-- Selecione um exemplo clássico para carregar --</option>
-                        <option value="ex_grud_aba">Aula 03 (Slide 26): a(ba)* em GRUD (|w| ≤ 1, Direita)</option>
-                        <option value="ex_grue_aba">Aula 03 (Slide 27): a(ba)* em GRUE (|w| ≤ 1, Esquerda)</option>
-                        <option value="ex_grd_aba">Aula 03 (Slide 24): a(ba)* em GRD (|w| ≥ 0, Direita)</option>
-                        <option value="ex_gre_aba">Aula 03 (Slide 25): a(ba)* em GRE (|w| ≥ 0, Esquerda)</option>
-                        <option value="ex_lousa_abb_grd">Lousa do Professor: a*bb em GRD (Não-Unitária)</option>
-                        <option value="ex_lousa_abb_grud">Lousa do Professor: a*bb em GRUD (Unitária)</option>
-                        <option value="ex_slide19_par">Aula 03 (Slide 19): (a|b)*(aa|bb) em GRD</option>
-                        <option value="ex_prova_grue">Prova 2020: 0⁺ 1 0* em GRUE (|w| ≤ 1, Esquerda)</option>
-                        <option value="ex_nao_regular_glc">Contraexemplo (Slide 12): S -> aSb | e (Não-Regular / GLC)</option>
+                        <option value="">-- Selecione um exemplo para carregar --</option>
+                        <option value="ex_grud_aba">a(ba)* em GRUD (|w| ≤ 1, Direita)</option>
+                        <option value="ex_grue_aba">a(ba)* em GRUE (|w| ≤ 1, Esquerda)</option>
+                        <option value="ex_grd_aba">a(ba)* em GRD (|w| ≥ 0, Direita)</option>
+                        <option value="ex_gre_aba">a(ba)* em GRE (|w| ≥ 0, Esquerda)</option>
+                        <option value="ex_abb_grd">a*bb em GRD (Não-Unitária)</option>
+                        <option value="ex_abb_grud">a*bb em GRUD (Unitária)</option>
+                        <option value="ex_par_id_grd">(a|b)*(aa|bb) em GRD</option>
+                        <option value="ex_prova_grue">0⁺ 1 0* em GRUE (|w| ≤ 1, Esquerda)</option>
+                        <option value="ex_nao_regular_glc">Contraexemplo: S -> aSb | e (Não-Regular / GLC)</option>
                     </select>
                 </div>
 
@@ -90,7 +90,7 @@
                     </div>
 
                     <div id="classificationExplanation" class="classification-note">
-                        Insira as regras de produção acima para classificar automaticamente em <strong>GRD</strong>, <strong>GRE</strong>, <strong>GRUD</strong> ou <strong>GRUE</strong> conforme os critérios da disciplina.
+                        Insira as regras de produção acima para classificar automaticamente em <strong>GRD</strong>, <strong>GRE</strong>, <strong>GRUD</strong> ou <strong>GRUE</strong> conforme os critérios formais.
                     </div>
                 </div>
 

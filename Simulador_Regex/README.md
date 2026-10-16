@@ -13,7 +13,7 @@ O sistema reúne em uma **única interface acadêmica coesa** dois módulos fund
 
 2. **Módulo Gramática Regular (GR):**
    - Inserção flexível de produções no formato $A \to \alpha$ (com suporte a alternativas `|` e símbolos de cadeia vazia $\epsilon, \lambda, e$).
-   - **Classificador Formal Automático** baseado na lousa e slides do Prof. Dr. Celso Olivette Junior:
+   - **Classificador Formal Automático:**
      - **GRD** (Regular à Direita): $A \to wB \mid w$ ($|w| \ge 0$).
      - **GRE** (Regular à Esquerda): $A \to Bw \mid w$ ($|w| \ge 0$).
      - **GRUD** (Regular Unitária à Direita): $A \to aB \mid a \mid \epsilon$ ($|w| \le 1$).
@@ -22,14 +22,14 @@ O sistema reúne em uma **única interface acadêmica coesa** dois módulos fund
    - Extração automática do **Quarteto Formal:** $G = (V, T, P, S)$.
    - **Simulador e Reconhecedor de Sentenças:** testa se uma palavra pertence à linguagem da gramática.
    - **Rastreamento de Derivação Passo a Passo:** exibe a cadeia de derivação $S \Rightarrow^* w$ e a evolução de cada passo sentencial.
-   - **Menu de Exemplos Prontos:** acesso imediato aos casos clássicos apresentados em aula (ex: $a(ba)^*$, $a^*bb$, $(a|b)^*(aa|bb)$, $0^+ 1 0^*$).
+   - **Menu de Exemplos Prontos:** acesso imediato aos casos clássicos de estudo (ex: $a(ba)^*$, $a^*bb$, $(a|b)^*(aa|bb)$, $0^+ 1 0^*$).
 
 ## Tecnologias Utilizadas
 
 O projeto foi construído utilizando apenas tecnologias web nativas, sem dependências externas:
 - **HTML5:** Estruturação semântica da página com navegação por abas.
 - **CSS3:** Estilização visual mantendo o padrão institucional sóbrio e acadêmico.
-- **JavaScript (ES6):** Motor de parsing, autômatos conceituais, classificação formal e busca em largura (BFS) para derivação sentencial.
+- **JavaScript (ES6):** Motor de parsing, classificação formal e busca em largura (BFS) para derivação sentencial.
 
 ## Como Executar Localmente
 
